@@ -88,10 +88,13 @@ module.exports = (robot) ->
   robot.respond /(all|list) factoids?/i, (msg) =>
     all = @factoids.getAll()
     out = ''
+    msg.reply 'Some reply'
     if not all? or Object.keys(all).length is 0
       msg.reply "No factoids defined"
     else
       for f of all
+        console.log f
+        msg.reply f
         out += prefix + f + ': ' + all[f] + "\n"
       msg.reply "All factoids: \n" + out
 
